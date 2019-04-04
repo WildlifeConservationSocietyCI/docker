@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM python:3.7-slim-stretch
 MAINTAINER <sysadmin@datamermaid.org>
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -9,14 +9,8 @@ ENV LC_ALL C.UTF-8
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gnupg \
     build-essential \
-    libffi-dev \
-    libmemcached-dev \
-    libpq-dev \
-    libxslt-dev \
-    python-dev \
-    python-pip \
+    python3-dev \
     wget \
-    git \
     vim \
     nano \
     supervisor \
