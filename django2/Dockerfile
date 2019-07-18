@@ -1,5 +1,5 @@
 FROM python:3.7-slim-stretch
-MAINTAINER <sysadmin@datamermaid.org>
+LABEL maintainer="<sysadmin@datamermaid.org>"
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV LANG C.UTF-8

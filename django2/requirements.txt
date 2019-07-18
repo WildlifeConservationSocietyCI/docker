@@ -1,6 +1,3 @@
-# git+https://github.com/Supervisor/supervisor.git
-# https://github.com/Supervisor/supervisor/issues/1060
-# https://github.com/Supervisor/supervisor/issues/510
 boto3==2.49.0
 django==2.2.3
 django-cors-headers==3.0.2
