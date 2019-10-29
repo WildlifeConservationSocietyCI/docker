@@ -1,7 +1,7 @@
 future==0.16
 psycopg2-binary==2.7.7
 django==1.11.23
-djangorestframework==3.8
+djangorestframework==3.9.1
 djangorestframework-gis==0.13
 drf-nested-routers==0.91
 django_extensions==2.1.6
