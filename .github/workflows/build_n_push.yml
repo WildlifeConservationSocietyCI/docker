@@ -1,0 +1,48 @@
+name: Build Docker Images and Push to Dockerhub
+
+on:
+  push:
+    branches:
+      # - master
+      - setup_github_actions
+
+jobs:
+  build_django_api:
+    name: Build Django API image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      - 
+        name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: ./django-api
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/docker:django-api
+  
+  build_django_geo_api:
+    needs: build_django_api
+    name: Build Django Geo API image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: ./django-geo-api
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/docker:django-geo-api
